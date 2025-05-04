@@ -1,10 +1,23 @@
-# Lexinica
+# LexiNica – Bot Jurídico
 
-**Lexinica** es un bot jurídico que responde preguntas legales con inteligencia artificial, usando OpenAI y WhatsApp mediante Twilio.
+**LexiNica** es un bot jurídico desarrollado en Node.js que responde preguntas legales usando inteligencia artificial. Se conecta con Dialogflow para el procesamiento del lenguaje natural y puede usarse desde WhatsApp o una página web.
+
+## Funcionalidades principales
+
+- Procesamiento de preguntas legales básicas con IA.
+- Conexión a Dialogflow mediante webhook.
+- Respuestas automáticas vía WhatsApp o Web.
+- Backend listo para despliegue en plataformas como Render o Railway.
+
+## Requisitos
+
+- Node.js y npm instalados.
+- Archivo `lexinica-key.json` (clave del agente Dialogflow).
+- Clave de API de OpenAI.
 
 ## Cómo usar
 
-1. Clona el repositorio
-2. Instala las dependencias: `npm install`
-3. Agrega tu clave de OpenAI en el archivo `.env`
-4. Corre el bot: `npm start`
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/carol-fuentes/lexinica.git
+   cd lexinica
