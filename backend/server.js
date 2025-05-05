@@ -1,26 +1,19 @@
-onst express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
+const express = require('express');
 const cors = require('cors');
+const multer = require('multer');
+const upload = multer(); // sin guardar archivos, solo datos
 
-// Middleware para manejar datos en formato JSON y URL encoded
+const app = express();
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
-// Endpoint para recibir los datos del formulario
-app.post('/api/consulta', (req, res) => {
+// Ruta del formulario
+app.post('/api/consulta', upload.none(), (req, res) => {
   const { nombre, telefono, consulta, descripcion } = req.body;
 
-  // Aquí puedes hacer lo que quieras con los datos (guardar en DB, enviar un correo, etc.)
-  console.log('Formulario recibido:', { nombre, telefono, consulta, descripcion });
+  console.log("Consulta recibida:", nombre, telefono, consulta, descripcion);
 
-  // Responder con éxito o error
-  res.json({ success: true, message: "Datos recibidos correctamente" });
+  res.status(200).send("Consulta recibida");
 });
 
-// Configurar el puerto en el que el servidor escuchará
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Servidor corriendo en el puerto ${port}`);
-});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
