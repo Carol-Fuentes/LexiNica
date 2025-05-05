@@ -1,15 +1,25 @@
 {
-  "name": "lexinica-node",
+  "name": "lexinica",
   "version": "1.0.0",
-  "description": "Bot jurídico con Dialogflow y Node.js",
+  "description": "Backend de LexiNica",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "@google-cloud/dialogflow": "^7.0.1",
-    "body-parser": "^1.20.2",
-    "express": "^4.18.2",
-    "uuid": "^9.0.0"
-  }
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Carol-Fuentes/LexiNica.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Carol-Fuentes/LexiNica/issues"
+  },
+  "homepage": "https://github.com/Carol-Fuentes/LexiNica#readme"
 }

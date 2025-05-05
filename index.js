@@ -1,23 +1,28 @@
+// Requerimos Express
 const express = require('express');
-const bodyParser = require('body-parser');
-const { runDialogFlowQuery } = require('./dialogflowClient');
-
 const app = express();
-app.use(bodyParser.json());
 
-app.post('/webhook', async (req, res) => {
-  const userMessage = req.body.message;
+// Middleware para recibir JSON
+app.use(express.json());
 
-  try {
-    const response = await runDialogFlowQuery(userMessage);
-    res.json({ reply: response.fulfillmentText });
-  } catch (error) {
-    console.error('Error en webhook:', error);
-    res.status(500).json({ error: 'Error en el webhook' });
-  }
+// Ruta de ejemplo para pruebas
+app.get('/', (req, res) => {
+    res.send('¡Hola desde Render!');
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en el puerto ${PORT}`);
+// Ruta para recibir consultas del frontend
+app.post('/api/consulta', (req, res) => {
+    const { mensaje } = req.body; // Recibe el mensaje desde el frontend
+
+    // Aquí puedes agregar lógica para procesar la consulta, responder, etc.
+    console.log('Consulta recibida:', mensaje);
+    
+    // Responde con un mensaje (esto puede ser lo que desees enviar de vuelta al frontend)
+    res.json({ respuesta: `Gracias por tu consulta: "${mensaje}"` });
+});
+
+// Escucha en el puerto adecuado (Render lo asigna automáticamente)
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`Servidor corriendo en el puerto ${port}`);
 });
